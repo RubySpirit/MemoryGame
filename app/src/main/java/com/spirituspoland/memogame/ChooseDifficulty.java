@@ -20,8 +20,11 @@ public class ChooseDifficulty extends AppCompatActivity {
 
     }
 
-
     private void startHardGame() {
+
+    }
+
+    private void startCustomGame() {
 
     }
 }
