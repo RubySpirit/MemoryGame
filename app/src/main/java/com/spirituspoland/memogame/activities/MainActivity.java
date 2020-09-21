@@ -1,10 +1,12 @@
- package com.spirituspoland.memogame;
+ package com.spirituspoland.memogame.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.spirituspoland.memogame.R;
 
  public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +19,7 @@ import android.view.View;
 
     public void startGame(View view)
     {
-        Intent intent = new Intent(this, ChooseDifficulty.class);
+        Intent intent = new Intent(this, ChooseDifficultyActivity.class);
         startActivity(intent);
     }
 }
