@@ -9,7 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.spirituspoland.memogame.GameData;
 import com.spirituspoland.memogame.R;
+import com.spirituspoland.memogame.data.GameDifficulty;
+
 
 public class CustomGameActivity extends AppCompatActivity {
 
@@ -48,6 +51,15 @@ public class CustomGameActivity extends AppCompatActivity {
     public void createGame(View view){
         getSelectedColumns();
         getSelectedRows();
+        startGame(getSelectedRows(),getSelectedColumns());
+    }
+
+    public void startGame(int rows, int columns)
+    {
+        Intent gameIntent= new Intent(this, GameActivity.class);
+        GameDifficulty.GameDifficultyBuilder gameDifficultyBuilder=new GameDifficulty.GameDifficultyBuilder(rows,columns);
+        gameIntent.putExtra("game",new GameData(gameDifficultyBuilder.build()));
+        startActivity(gameIntent);
     }
 
 }

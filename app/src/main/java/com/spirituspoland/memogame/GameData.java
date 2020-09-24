@@ -6,23 +6,32 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 @Data
-@RequiredArgsConstructor
 public class GameData implements Serializable {
 
-    private final int rows;
-    private final int columns;
     private final LocalDateTime created;
     private final GameDifficulty difficulty;
 
     private int moves;
     private LocalDateTime ended;
 
-
+    public GameData(GameDifficulty gameDifficulty)
+    {
+        this.difficulty=gameDifficulty;
+        this.created=LocalDateTime.now();
+        this.moves=0;
+    }
     public void increaseMoveNumber() {
         moves++;
     }
 
+    public int getRows()
+    {
+        return difficulty.getRows();
+    }
+    public int getColumns()
+    {
+        return difficulty.getColumns();
+    }
 }
