@@ -1,26 +1,30 @@
 package com.spirituspoland.memogame.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import com.spirituspoland.memogame.GameData;
 import com.spirituspoland.memogame.R;
 import com.spirituspoland.memogame.data.GameDifficulty;
 
 
-public class CustomGameActivity extends AppCompatActivity {
+public class CustomGameActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.custom_game);
         prepareValues();
+    }
+    @Override
+    public void onBackPressed() {
+        NavUtils.navigateUpFromSameTask(this);
     }
 
 
@@ -37,15 +41,11 @@ public class CustomGameActivity extends AppCompatActivity {
 
     public int getSelectedRows() {
         Spinner rowSpinner = findViewById(R.id.rowsDropdown);
-        Integer rowNumber = (Integer) rowSpinner.getSelectedItem();
-        Toast.makeText(this, "YOUR SELECTION IS : " + rowNumber, Toast.LENGTH_SHORT).show();
-        return rowNumber;
+        return (Integer) rowSpinner.getSelectedItem();
     }
     public int getSelectedColumns() {
         Spinner columnSpinner = findViewById(R.id.columnsDropdown);
-        Integer columnNumber = (Integer) columnSpinner.getSelectedItem();
-        Toast.makeText(this, "YOUR SELECTION IS : " + columnNumber, Toast.LENGTH_SHORT).show();
-        return columnNumber;
+        return (Integer) columnSpinner.getSelectedItem();
     }
 
     public void createGame(View view){
